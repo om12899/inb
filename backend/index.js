@@ -3,9 +3,11 @@ const app = express();
 const port = 5001;
 
 const connectToMongo = require('./db');
-
+// Connect to MongoDB
+connectToMongo();
 // Routes
 const authRoutes = require('./routes/auth');
+const notesRoutes = require('./routes/notes');
 // const notesRoutes = require('./routes/notes');
 
 // Middleware
@@ -17,11 +19,11 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/notes',notesRoutes)
 // app.use('/api/notes', notesRoutes);
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`Server is not listening on port ${port}`);
 });
 
-// Connect to MongoDB
-connectToMongo();
+
